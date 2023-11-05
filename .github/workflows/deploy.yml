@@ -18,8 +18,7 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-
       - name: Deploy to Vercel
-        run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --confirm
+        if: github.ref == 'refs/heads/main'  # Only run on the main branch
+        run: |
+          vercel --token ${{ secrets.VERCEL_TOKEN }}
