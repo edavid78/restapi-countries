@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-     
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,7 +21,6 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
 
-  - name: Deploy to Vercel
-  run: |
-    vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --confirm
-
+      - name: Deploy to Vercel
+        run: |
+          vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
