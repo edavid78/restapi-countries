@@ -18,7 +18,8 @@ jobs:
         with:
           node-version: 16
 
-      - name: Deploy to Vercel
-        if: github.ref == 'refs/heads/main'  # Only run on the main branch
-        run: |
-          vercel --token ${{ secrets.VERCEL_TOKEN }}
+- name: Deploy to Vercel
+  run: |
+    set -x
+    vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
+
