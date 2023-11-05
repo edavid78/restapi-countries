@@ -18,8 +18,10 @@ jobs:
         with:
           node-version: 16
 
-- name: Deploy to Vercel
-  run: |
-    set -x
-    vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
+      - name: Install Vercel CLI
+        run: npm install -g vercel
 
+      - name: Deploy to Vercel
+        env:
+          VERCEL_ENV: production  # Specify the target environment
+        run: vercel --token ${{ secrets.VERCEL_TOKEN }}
